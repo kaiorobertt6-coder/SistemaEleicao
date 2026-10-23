@@ -26,27 +26,26 @@ namespace SistemaEleicao.Tests
 
             Assert.False(resultado);
         }
+
+        [Fact]
+        public void DeveCadastrarEleitorComTituloValido()
+        {
+            EleicaoManager eleicao = new EleicaoManager();
+
+            bool resultado = eleicao.CadastrarEleitor("123456");
+
+            Assert.True(resultado);
+        }
+
+        [Fact]
+        public void NaoDeveCadastrarEleitorComTituloDuplicado()
+        {
+            EleicaoManager eleicao = new EleicaoManager();
+
+            eleicao.CadastrarEleitor("123456");
+            bool resultado = eleicao.CadastrarEleitor("123456");
+
+            Assert.False(resultado);
+        }
     }
-}
-
-
-[Fact]
-public void DeveCadastrarEleitorComTituloValido()
-{
-    EleicaoManager eleicao = new EleicaoManager();
-
-    bool resultado = eleicao.CadastrarEleitor("123456");
-
-    Assert.True(resultado);
-}
-
-[Fact]
-public void NaoDeveCadastrarEleitorComTituloDuplicado()
-{
-    EleicaoManager eleicao = new EleicaoManager();
-
-    eleicao.CadastrarEleitor("123456");
-    bool resultado = eleicao.CadastrarEleitor("123456");
-
-    Assert.False(resultado);
 }
